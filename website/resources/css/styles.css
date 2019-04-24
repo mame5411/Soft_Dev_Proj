@@ -1,18 +1,85 @@
-/* This css was created by Bootstrap for their login page example */
-html, body {
-    height:100%; /* important to vertically align the container */
-    margin:0;
-    padding:0;
+
+@font-face {
+    font-family: RobotoBold;
+    src: url(../Fonts/Roboto-Bold.ttf);
 }
 
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../Fonts/HelveticaNeue.ttf);
 }
 
+@font-face {
+    font-family: HelveticaNeueLight;
+    src: url(../Fonts/HelveticaNeueLight.ttf);
+}
 
+img {
+    width: 100%;
+    height: auto;
+    border: none;
+}
+
+.optionsButton {
+    position: absolute; 
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: RobotoBold; 
+    top: 50px;
+    right: 75px; 
+    width: 200px;
+    border: none; 
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.getStartedButton {
+    background-color: #FFFFFF;
+    border-radius: 45px;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    color: #3D9CCE;
+    font-family: RobotoBold;
+    width:400px;
+    height:70px;
+    position:absolute; 
+    margin-left: -200px;
+    top:50%; 
+    left:50%;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-family: RobotoBold;
+    color: #FFFFFF;
+    text-align:center;
+    display:inline-block;
+    margin:-100px 0px 0px 0px; 
+    /* top right bottom left */
+}
+
+.descriptionTitle {
+    margin-top: 40px;
+    font-size: 40px;
+    text-align: center;
+    font-family: HelveticaNeue;
+    color: #4A4A4A;
+}
+
+.description {
+    margin: 40px 150px 80px 150px;
+    font-size: 28px;
+    text-align: center;
+    font-family: HelveticaNeueLight;
+    color: #4A4A4A;
+}
