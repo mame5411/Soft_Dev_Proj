@@ -6,10 +6,12 @@
   Pg-Promise   - A database tool to help use connect to our PostgreSQL database
 ***********************/
 var express = require('express'); //Ensure our express framework has been added
+var bcrypt = require('bcrypt');
+var express_session = require('express-session');
 var app = express();
-var bodyParser = require('body-parser'); //Ensure our body-parser tool has been added
-app.use(bodyParser.json());              // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Create Database Connection
 // var pgp = require('pg-promise')();
@@ -101,6 +103,26 @@ app.get('/profile',
                            page_title: "Profile",
                        });
         });
+
+// NOTE(rjf): Log in request
+app.post('/login',
+        function(req, res) {
+			console.log(req.body);
+		});
+
+// NOTE(rjf): Log out
+app.get('/logout', function(req, res, next) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function(err) {
+      if(err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+});
 
 /*
 // home page 
