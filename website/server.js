@@ -108,6 +108,8 @@ app.get('/profile',
 app.post('/login',
         function(req, res) {
 			console.log(req.body);
+			res.writeHead(301, {Location: '/profile'});
+			res.end();
 		});
 
 // NOTE(rjf): Log out
