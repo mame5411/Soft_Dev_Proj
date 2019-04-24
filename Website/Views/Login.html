@@ -3,10 +3,107 @@
 <head>
 <title>Page Title</title>
 </head>
-<body>
+<style>
+    @font-face {
+        font-family: RobotoBold;
+        src: url(../Resources/Fonts/Roboto-Bold.ttf);
+    }
+    @font-face {
+        font-family: HelveticaNeue;
+        src: url(../Resources/Fonts/HelveticaNeue.ttf);
+    }
+    @font-face {
+        font-family: HelveticaNeueLight;
+        src: url(../Resources/Fonts/HelveticaNeueLight.ttf);
+    }
+    .heading {
+        text-align: center;
+        font-family: RobotoBold;
+        font-size: 40px;
+        margin-top: 150px;
+    }
+    .loginBox {
+        border-radius: 16px;
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 300px;
+        margin: auto;
+        margin-top: 60px;
+    }
+    .input {
+        width: 350px;
+        height: 50px;
+        font-family: HelveticaNeue;
+        font-size: 25px;
+        text-align: center;
+        border-radius: 10px;
+        margin-top: 25px;
+        margin-left: 25px;
+    }
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    .homeButton {
+        position: absolute; 
+        font-size: 20px;
+        font-family: RobotoBold; 
+        top: 50px;
+        right: 75px; 
+        width: 200px;
+        border: none; 
+        background-color: transparent;
+        text-decoration: none;
+        color: #4A4A4A;
+    }
+
+    .loginButton {
+        width: 350px;
+        height: 60px;
+        font-family: RobotoBold;
+        font-size: 25px;
+        text-align: center;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-left: 25px;
+        background-color: #34A7E9;
+        border: none;
+        color: #FFFFFF;
+    }
+
+    .bottomBox {
+        border-radius: 16px;
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 300px;
+        margin: auto;
+        margin-top: 60px;
+    }
+    
+</style>
+<body style="background-color:#EDF2F2;">
+    <div class = "form">
+        <form>
+            <a href="ResumeHome.html" class="homeButton">Home</a>
+        </form>
+    </div>
+    <h1 class = "heading">Log In</h1>
+
+    <div class= "loginBox">
+    <div class = "form">
+        <form class = loginForm>
+            <input class = "input" type = "text" placeholder = "Email">
+            <input class = "input" type = "text" placeholder = "Password">
+            <button class = "loginButton">Login</button>
+        </form>
+    </div>
+    </div>
+
+    <div class= "loginBox">
+    <div class = "form">
+        <form>
+           
+        </form>
+    </div>
+    </div>
+
 
 </body>
 </html>
