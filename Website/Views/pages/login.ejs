@@ -1,16 +1,33 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
 
+	<body style="background-color:#EDF2F2;">
+
 	<div class= "container">
-        <div class ="title">Login</div>
-		 
-		<label for="username">Username</label>
-		<input type="text" name="username"><br>
-		 
-		<label for="password">Password</label>
-		<input type="password" name="password"><br>
-		  
-        <div><button class="applyButton">Login</button></div>
+		<div class = "form">
+			<form>
+				<a href="ResumeHome.html" class="homeButton">Home</a>
+			</form>
+		</div>
+		<h1 class = "heading">Log In</h1>
+
+		<div class= "loginBox">
+			<div class = "form">
+				<form class = loginForm>
+					<input class = "input" type = "text" placeholder = "Email">
+					<input class = "input" type = "text" placeholder = "Password">
+					<button class = "loginButton">Login</button>
+				</form>
+			</div>
+		</div>
+
+		<div class= "loginBox">
+			<div class = "form">
+				<form>
+           
+				</form>
+			</div>
+		</div>
     </div>
 
 <% include ../partials/footer %>
