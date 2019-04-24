@@ -19,7 +19,7 @@ SET default_with_oids = false;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-	username character varying(20) NOT NULL,
+	username character varying(20) NOT NULL PRIMARY KEY,
 	pass character varying(20) NOT NULL,
 	first_name character varying(20),
 	last_name character varying(20),
@@ -38,7 +38,7 @@ CREATE TABLE users (
 	JOBtitle text ARRAY[5],
 	JOBstart date ARRAY[5],
 	JOBend date ARRAY[5],
-	JODdesc text ARRAY[5],
+	JOBdesc text ARRAY[5],
 	JOBcomp text ARRAY[5]
 );
 
