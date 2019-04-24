@@ -49,6 +49,11 @@ img {
     left:50%;
 }
 
+.applyButton {
+	background-color: #ff00ff;
+	border-radius: 45px;
+}
+
 .container {
     position: relative;
     text-align: center;

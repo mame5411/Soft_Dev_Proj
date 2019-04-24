@@ -84,6 +84,15 @@ app.get('/',
                        });
         });
 
+// NOTE(rjf): Login page
+app.get('/login',
+        function(req, res) {
+            res.render('pages/login',
+                       {
+                           page_title: "Login",
+                       });
+        });
+
 /*
 // home page 
 app.get('/home', function(req, res) {
