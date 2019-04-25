@@ -13,6 +13,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var token_table = {};
+
 //Create Database Connection
 // var pgp = require('pg-promise')();
 
@@ -160,7 +162,14 @@ app.get('/results',
 app.post('/login',
         function(req, res) {
 			console.log(req.body);
+			
+			var username = 'george';
+			var user_token = token();
+			
+			token_table[user_token] = username;
+			
 			res.writeHead(301, {Location: '/profile'});
+			// res.send(user_token);
 			res.end();
 		});
 

@@ -1,4 +1,12 @@
 
+function get_token() {
+	return document.getElementById('user-session-token').innerText;
+}
+
+function set_token(token) {
+	document.getElementById('user-session-token').innerText = token;
+}
+
 function login(username, password) {
 	var request = new Request('/loginreq');
 	fetch(request).then(function(response) {
