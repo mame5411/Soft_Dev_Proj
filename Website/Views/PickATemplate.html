@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<style>
+     @font-face {
+        font-family: Roboto;
+        src: url(../Resources/Fonts/Roboto-Regular.ttf);
+    }
+    @font-face {
+        font-family: HelveticaNeue;
+        src: url(../Resources/Fonts/HelveticaNeue.ttf);
+    }
+    @font-face {
+        font-family: RobotoBold;
+        src: url(../Resources/Fonts/Roboto-Bold.ttf);
+    }
+    .heading {
+        text-align: center;
+        font-family: RobotoBold;
+        font-size: 40px;
+        margin-top: 100px;
+        color:#4A4A4A;
+    }
+    .contentBox {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+        width: 50%;
+        height: 100%;
+    }
+    .cell {
+        border-radius: 5px;
+        background-color: #FAFAFA;
+        box-shadow: 3px 3px 5px 4px #E1E1E1;
+        width: auto;
+        height: 400px;
+        margin-top: 40px;
+        display:flex;
+
+    }
+    .description {
+        text-align: center;
+        margin-left: 60px;
+        margin-right: 60px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .templateImage {
+        height: 350px;
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+
+    .templateName {
+        text-align: center;
+        font-family: RobotoBold;
+        font-size: 30px;
+        height: 30px;
+        color:#4A4A4A;
+    }
+
+    .templateDescription {
+        font-family: Roboto;
+        font-size: 18px;
+        height: auto;
+        text-align: left;
+        margin-top: 50px;
+        color: #4A4A4A;
+    }
+
+    .button {
+        font-size: 20px;
+        font-family: RobotoBold;  
+        width: 150px;
+        border: none; 
+        margin-right: 50px;
+        background-color: transparent;
+        text-decoration: none;
+        color: #4A4A4A;
+    }
+    .buttonForm {
+        text-align: right;
+        margin-right: 50px;
+        margin-top: 50px;
+    }
+
+    .cellClick {
+        width:50%;
+        height:400px;
+        position: absolute;
+        background-color: transparent;
+    }
+
+</style>
+
+<body style="background-color:#EDF2F2;">
+
+    <div class = "buttonForm">
+            <a href="Login.html" class="button">Login</a>
+            <a href="ResumeHome.html" class="button">Home</a>
+    </div>
+
+   <h1 class = "heading">Pick a template</h1>
+
+   <div class = "contentBox">
+        <div class = "cell"> 
+            <img src= "../Resources/Assets/Template1.png" class = "templateImage" alt="template1">
+            <div class = "description">
+                <p class = "templateName">Template 1</p>
+                <p class = "templateDescription">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <a href = "" class = "cellClick"></a>
+        </div>
+
+        <div class = "cell"> 
+            <img src= "../Resources/Assets/Template2.png" class = "templateImage" alt="template1">
+             <div class = "description">
+                <p class = "templateName">Template 2</p>
+                <p class = "templateDescription">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+   </div>
+   
+
+
+</body>
+</html>
