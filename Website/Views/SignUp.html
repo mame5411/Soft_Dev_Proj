@@ -22,13 +22,20 @@
         font-size: 40px;
         margin-top: 150px;
     }
-    .loginBox {
+    .signUpBox {
         border-radius: 16px;
         background-color: #FFFFFF;
         width: 400px;
-        height: 300px;
+        height:auto;
         margin: auto;
         margin-top: 60px;
+    }
+    .info {
+        font-family: HelveticaNeue;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-left: 25px;
+        color: #9B9B9B;
     }
     .input {
         width: 350px;
@@ -37,7 +44,7 @@
         font-size: 25px;
         text-align: center;
         border-radius: 10px;
-        margin-top: 25px;
+        margin-top: 20px;
         margin-left: 25px;
     }
 
@@ -54,15 +61,16 @@
         color: #4A4A4A;
     }
 
-    .loginButton {
+    .createAcctButton {
         width: 350px;
         height: 60px;
         font-family: RobotoBold;
         font-size: 25px;
         text-align: center;
         border-radius: 10px;
-        margin-top: 40px;
+        margin-top: 20px;
         margin-left: 25px;
+        margin-bottom: 25px;
         background-color: #34A7E9;
         border: none;
         color: #FFFFFF;
@@ -71,7 +79,7 @@
     .bottomBox {
         border-radius: 16px;
         background-color: #FFFFFF;
-        width: 400px;
+        width: 600px;
         height: 300px;
         margin: auto;
         margin-top: 60px;
@@ -83,7 +91,7 @@
         margin: auto;
         margin-top: 20px;
     }
-    .dontHaveAcct {
+    .alreadyHaveAcct {
         font-family: HelveticaNeue;
         font-size: 20px;
         color: #4A4A4A;
@@ -104,20 +112,22 @@
             <a href="ResumeHome.html" class="homeButton">Home</a>
         </form>
     </div>
-    <h1 class = "heading">Log In</h1>
+    <h1 class = "heading">Create Account</h1>
 
-    <div class= "loginBox">
+    <div class= "signUpBox">
     <div class = "form">
-        <form class = loginForm>
+        <form class = "signUpForm">
             <input class = "input" type = "text" placeholder = "Email">
+            <p class = "info">Enter your email</p>
             <input class = "input" type = "text" placeholder = "Password">
-            <button class = "loginButton">Login</button>
+            <p class = "info">Pick a password (8 character Minimum)</p>
+            <button class = "createAcctButton">Create Account</button>
         </form>
     </div>
     </div>
 
     <div class = "questionBox">
-         <a class = "dontHaveAcct">Don't have an account? <a href = "SignUp.html" class = "signUp"> Sign Up</a></a>
+         <a class = "alreadyHaveAcct">Already have an account? <a href = "Login.html" class = "signUp"> Log In</a></a>
     </div>
 
 
