@@ -103,6 +103,13 @@ app.get('/profile',
                            page_title: "Profile",
                        });
         });
+app.get('/results',
+        function(req, res) {
+            res.render('pages/results',
+                       {
+                           page_title: "Results",
+                       });
+        });
 
 // NOTE(rjf): Log in request
 app.post('/login',
