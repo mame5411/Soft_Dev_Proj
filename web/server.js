@@ -103,13 +103,52 @@ app.get('/profile',
                            page_title: "Profile",
                        });
         });
+		
+// NOTE(rjf): Generate page
+app.get('/generate',
+        function(req, res) {
+            res.render('pages/generate',
+                       {
+                           page_title: "Generate",
+                       });
+        });
+
+// NOTE(jlb): Results page
 app.get('/results',
         function(req, res) {
+          var str = 'Hello';
+          var str2 = ' World';
+          var path = 'helloworld.txt';
             res.render('pages/results',
                        {
                            page_title: "Results",
                        });
+            fs = require('fs');
+
+            try {
+              if (fs.existsSync(path)) {
+                console.log("exists")
+                fs.unlinkSync('helloworld.txt');
+              }
+            } catch(err) {
+              console.error(err)
+            }
+
+            
+
+            fs.appendFileSync('helloworld.txt', str, function (err) {
+              if (err) 
+                return console.log(err);
+              console.log('Wrote Hello World in file helloworld.txt, just check it');
+            });
+            fs.appendFileSync('helloworld.txt', str2, function (err) {
+              if (err)
+                return console.log(err);
+              console.log('The "data to append" was appended to file!');
+            });
         });
+
+
 
 // NOTE(rjf): Log in request
 app.post('/login',
