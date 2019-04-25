@@ -77,6 +77,12 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
      Next it will pass this result to the player_info view (pages/player_info), which will use the ids & names to populate the select tag for a form 
 ************************************/
 
+var token = function() {
+
+    return Math.random().toString(36).substr(2); // remove `0.`
+
+};
+
 // NOTE(rjf): Home page
 app.get('/',
         function(req, res) {
