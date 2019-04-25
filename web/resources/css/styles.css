@@ -183,6 +183,7 @@ tab-button::-moz-focus-inner {
 	width: 30%;
 	margin: auto;
 	margin-top: 60px;
+	padding-top: 0.5em;
 }
 
 .data-form {
