@@ -27,12 +27,8 @@ h3 {
 }
 
 .small-button {
-    position: absolute; 
     font-size: 20px;
     font-family: RobotoBold; 
-    top: 50px;
-    right: 75px; 
-    width: 200px;
     border: none; 
     background-color: transparent;
     text-decoration: none;
@@ -66,6 +62,11 @@ h3 {
 .feature-button:hover {
 	transition: all 0.20s ease;
 	transform: translate(0, -2px);
+}
+
+.navbar {
+	width: 80%;
+	text-align: left;
 }
 
 .container {
@@ -127,6 +128,8 @@ h3 {
 	margin: auto;
 	margin-top: 60px;
 	padding-top: 2em;
+	padding-bottom: 2em;
+	margin-bottom: 4em;
 }
 
 .input {
