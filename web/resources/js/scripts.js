@@ -42,3 +42,14 @@ function change_employment(num) {
 		}
 	}
 }
+
+function request_generate(template_number) {
+	const http = new XMLHttpRequest();
+	const url = '/generate';
+	var params = 'template_num=' + template_number;
+	http.open("POST", url);
+	http.onreadystatechange = (e) => {
+		alert(http.responseText)
+	}
+	http.send(params);
+}
