@@ -6,7 +6,7 @@
   Pg-Promise   - A database tool to help use connect to our PostgreSQL database
 ***********************/
 var express = require('express'); //Ensure our express framework has been added
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 var express_session = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
