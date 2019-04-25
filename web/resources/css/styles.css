@@ -37,6 +37,24 @@ hr {
 	
 }
 
+.template-image {
+	width: auto;
+	height: 20em;
+	transition: all ease 0.2s;
+}
+
+.template-image:hover {
+	transform: scale(1.1, 1.1);
+	transition: all ease 0.2s;
+	box-shadow: 0px 0px 5px #333333;
+}
+
+.template-image:active {
+	transform: scale(0.99, 0.99);
+	transition: all ease 0.2s;
+	box-shadow: 0px 0px 5px #333333;
+}
+
 .small-button {
     font-size: 20px;
     font-family: RobotoBold; 
@@ -165,7 +183,7 @@ tab-button::-moz-focus-inner {
 .description {
     margin: 40px 150px 80px 150px;
     font-size: 28px;
-    text-align: center;
+    text-align: left;
     font-family: HelveticaNeueLight;
     color: #4A4A4A;
 }

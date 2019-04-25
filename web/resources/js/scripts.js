@@ -1,4 +1,12 @@
 
+function get_token() {
+	return document.getElementById('user-session-token').innerText;
+}
+
+function set_token(token) {
+	document.getElementById('user-session-token').innerText = token;
+}
+
 function login(username, password) {
 	var request = new Request('/loginreq');
 	fetch(request).then(function(response) {
@@ -33,4 +41,15 @@ function change_employment(num) {
 			document.getElementById('employment-button-' + i).classList.remove('active');
 		}
 	}
+}
+
+function request_generate(template_number) {
+	const http = new XMLHttpRequest();
+	const url = '/generate';
+	var params = 'template_num=' + template_number;
+	http.open("POST", url);
+	http.onreadystatechange = (e) => {
+		alert(http.responseText)
+	}
+	http.send(params);
 }
