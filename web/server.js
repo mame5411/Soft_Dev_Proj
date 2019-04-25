@@ -122,9 +122,11 @@ app.get('/generate',
 // NOTE(jlb): Results page
 app.get('/results',
         function(req, res) {
-          var str = 'Hello';
-          var str2 = ' World';
-          var path = 'helloworld.txt';
+          var preamble =  '\\documentclass{resume}\n'+
+                          '\\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}\n'+
+                          '\\newcommand{\\tab}[1]{\\hspace{.2667\\textwidth}\\rlap{#1}}';
+          var str2 = 'test';
+          var path = 'Latex_templates/helloworld.txt';
             res.render('pages/results',
                        {
                            page_title: "Results",
@@ -134,7 +136,7 @@ app.get('/results',
             try {
               if (fs.existsSync(path)) {
                 console.log("exists")
-                fs.unlinkSync('helloworld.txt');
+                fs.unlinkSync(path);
               }
             } catch(err) {
               console.error(err)
@@ -142,12 +144,12 @@ app.get('/results',
 
             
 
-            fs.appendFileSync('helloworld.txt', str, function (err) {
+            fs.appendFileSync(path, preamble, function (err) {
               if (err) 
                 return console.log(err);
               console.log('Wrote Hello World in file helloworld.txt, just check it');
             });
-            fs.appendFileSync('helloworld.txt', str2, function (err) {
+            fs.appendFileSync(path, str2, function (err) {
               if (err)
                 return console.log(err);
               console.log('The "data to append" was appended to file!');
