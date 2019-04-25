@@ -26,17 +26,85 @@
 					<input class = "input" type = "text" placeholder = "Zip Code">
 					<hr>
 					
-					<h3>Education History</h3>
-					<input class = "input" type = "text" placeholder = "School Name">
-					<input class = "input" type = "text" placeholder = "Grade Point Average">
-					<input class = "input" type = "text" placeholder = "Graduation Date">
-					<hr>
+					<h3>Education</h3>
+					
+					<div class="tab-button-container">
+						<button id="education-button-1" type="button" class="tab-button active" onclick="change_education(1);">Education History 1</button>
+						<button id="education-button-2" type="button" class="tab-button" onclick="change_education(2);">Education History 2</button>
+						<button id="education-button-3" type="button" class="tab-button" onclick="change_education(3);">Education History 3</button>
+						<button id="education-button-4" type="button" class="tab-button" onclick="change_education(4);">Program Highlights</button>
+					</div>
+					
+					<div id="education-history-1" style="display:block;">
+						<h4>Education History (1)</h4>
+						<input class = "input" type = "text" placeholder = "School Name">
+						<input class = "input" type = "text" placeholder = "Grade Point Average">
+						<input class = "input" type = "text" placeholder = "Graduation Date">
+						<hr>
+					</div>
+					
+					<div id="education-history-2" style="display:none;">
+						<h4>Education History (2)</h4>
+						<input class = "input" type = "text" placeholder = "School Name">
+						<input class = "input" type = "text" placeholder = "Grade Point Average">
+						<input class = "input" type = "text" placeholder = "Graduation Date">
+						<hr>
+					</div>
+					
+					<div id="education-history-3" style="display:none;">
+						<h4>Education History (3)</h4>
+						<input class = "input" type = "text" placeholder = "School Name">
+						<input class = "input" type = "text" placeholder = "Grade Point Average">
+						<input class = "input" type = "text" placeholder = "Graduation Date">
+						<hr>
+					</div>
+					
+					<div id="education-history-4" style="display:none;">
+						<h4>Program Highlights</h4>
+						<input class = "input" type = "text" placeholder = "School Name">
+						<input class = "input" type = "text" placeholder = "Grade Point Average">
+						<input class = "input" type = "text" placeholder = "Graduation Date">
+						<hr>
+					</div>
 					
 					<h3>Employment History</h3>
-					<input class = "input" type = "text" placeholder = "Title">
-					<input class = "input" type = "text" placeholder = "Beginning Date">
-					<input class = "input" type = "text" placeholder = "End Date">
-					<textarea class = "input" type = "text" placeholder = "Short Description"></textarea>
+					
+					<div class="tab-button-container">
+						<button id="employment-button-1" type="button" class="tab-button active" onclick="change_employment(1);">Employment History 1</button>
+						<button id="employment-button-2" type="button" class="tab-button" onclick="change_employment(2);">Employment History 2</button>
+						<button id="employment-button-3" type="button" class="tab-button" onclick="change_employment(3);">Employment History 3</button>
+					</div>
+					
+					<div id="employment-history-1" style="display:block;">
+						<h4>Employment History (1)</h4>
+						<input class = "input" type = "text" placeholder = "Title">
+						<input class = "input" type = "text" placeholder = "Company">
+						<textarea class = "input" type = "text" placeholder = "Description"></textarea>
+						<input class = "input" type = "date" placeholder = "Start Date">
+						<input class = "input" type = "date" placeholder = "End Date">
+						<hr>
+					</div>
+					
+					<div id="employment-history-2" style="display:none;">
+						<h4>Employment History (2)</h4>
+						<input class = "input" type = "text" placeholder = "Title">
+						<input class = "input" type = "text" placeholder = "Company">
+						<textarea class = "input" type = "text" placeholder = "Description"></textarea>
+						<input class = "input" type = "date" placeholder = "Start Date">
+						<input class = "input" type = "date" placeholder = "End Date">
+						<hr>
+					</div>
+					
+					<div id="employment-history-3" style="display:none;">
+						<h4>Employment History (3)</h4>
+						<input class = "input" type = "text" placeholder = "Title">
+						<input class = "input" type = "text" placeholder = "Company">
+						<textarea class = "input" type = "text" placeholder = "Description"></textarea>
+						<input class = "input" type = "date" placeholder = "Start Date">
+						<input class = "input" type = "date" placeholder = "End Date">
+						<hr>
+					</div>
+					
 					<hr>
 					
 					<button class = "apply-button">Apply</button>

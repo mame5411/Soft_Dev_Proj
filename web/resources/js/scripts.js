@@ -8,3 +8,29 @@ function login(username, password) {
 	});
 
 }
+
+function change_education(num) {
+	for(let i = 1; i <= 4; ++i) {
+		if(num == i) {
+			document.getElementById('education-history-' + i).style.display = "block";
+			document.getElementById('education-button-' + i).classList.add('active');
+		}
+		else {
+			document.getElementById('education-history-' + i).style.display = "none";
+			document.getElementById('education-button-' + i).classList.remove('active');
+		}
+	}
+}
+
+function change_employment(num) {
+	for(let i = 1; i <= 4; ++i) {
+		if(num == i) {
+			document.getElementById('employment-history-' + i).style.display = "block";
+			document.getElementById('employment-button-' + i).classList.add('active');
+		}
+		else {
+			document.getElementById('employment-history-' + i).style.display = "none";
+			document.getElementById('employment-button-' + i).classList.remove('active');
+		}
+	}
+}
