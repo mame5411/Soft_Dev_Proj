@@ -1,4 +1,3 @@
-
 function login(user, pass) {
 	const http = new XMLHttpRequest();
 	const url = '/login';
@@ -47,8 +46,7 @@ function request_generate(template_number) {
 	http.setRequestHeader("Content-Type", "application/json");
 	http.onreadystatechange = (e) => {
 		if (http.readyState === 4 && http.status === 200) {
-			var response = JSON.parse(http.responseText);
-			document.location = '/results';
+			document.location.href = '/results';
 		}
 	}
 	var data = JSON.stringify({"template_num":template_number,});

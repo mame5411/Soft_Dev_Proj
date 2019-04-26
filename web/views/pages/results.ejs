@@ -3,8 +3,11 @@
 	<body style="background-color:#EDF2F2;">
 	<div class= "container">
         <div class ="heading">Results</div>
-        <div><button class="Button">Login</button></div>
-        <a href="Latex_templates/helloworld.txt" download="helloworld" >here</a>
+		<%
+		var resume_download_link = 'generated/resume' + user_token + '.txt';
+		var resume_download = 'resume' + user_token + '.txt';
+		%>
+        <a class="apply-button" href="<%-resume_download_link%>" download="<%-resume_download%>" >Download Resume</a>
     </div>
 
 <% include ../partials/footer %>
