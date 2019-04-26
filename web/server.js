@@ -73,8 +73,7 @@ app.get('/profile',
 		var token = req.cookies.user_token;
 		var username = token_table[token];
 		
-		if(username == undefined) {
-			var placeholder_data = [
+		var placeholder_data = [
 			{
 				first_name: '',
 				middle_init: '',
@@ -96,15 +95,59 @@ app.get('/profile',
 				jobdesc: ['', '', '', '', ''],
 				jobcomp: ['', '', '', '', ''],
 			}
-			];
-			
+		];
+		
+		if(username == undefined) {
 			res.cookie('user_token', 'invalid-token');
 			res.render('pages/profile', { page_title: "Profile", user_token:token, data:placeholder_data });
 		}
 		else {
 			db.any("select * from users where username = '" + username + "';").then(function (rows) {
-				console.log(rows);
-				res.render('pages/profile', { page_title: "Profile", user_token:token, data:rows });
+					
+				var data = placeholder_data;
+				data[0].first_name = rows[0].first_name;
+				data[0].middle_init = rows[0].middle_init;
+				data[0].last_name = rows[0].last_name;
+				data[0].phone = rows[0].phone;
+				data[0].email = rows[0].email;
+				data[0].addr = rows[0].addr;
+				data[0].ste = rows[0].ste;
+				
+				for(let i = 0; i < 3; ++i) {
+					if(row[0].edschool && row[0].edschool.length > i) {
+						data[0].edschool[i] = rows[0].edschool[i];
+					}
+					if(row[0].edgpa && row[0].edgpa.length > i) {
+						data[0].edgpa[i] = rows[0].edgpa[i];
+					}
+					if(row[0].edgrad && row[0].edgrad.length > i) {
+						data[0].edgrad[i] = rows[0].edgrad[i];
+					}
+					if(row[0].edprog && row[0].edprog.length > i) {
+						data[0].edprog[i] = rows[0].edprog[i];
+					}
+				}
+				
+				/*
+				for(let i = 0; i < 3; ++i) {
+					if(row[0].jobtitle.length > i) {
+						data[0].jobtitle[i] = rows[0].jobtitle[i];
+					}
+					if(row[0].jobstart.length > i) {
+						data[0].jobstart[i] = rows[0].jobstart[i];
+					}
+					if(row[0].jobend.length > i) {
+						data[0].jobend[i] = rows[0].jobend[i];
+					}
+					if(row[0].jobdesc.length > i) {
+						data[0].jobdesc[i] = rows[0].jobdesc[i];
+					}
+					if(row[0].jobcomp.length > i) {
+						data[0].jobcomp[i] = rows[0].jobcomp[i];
+					}
+				}
+				*/
+				res.render('pages/profile', { page_title: "Profile", user_token:token, data:data });
 			})
 			.catch(function (err) {
 				// request.flash('error', err);
