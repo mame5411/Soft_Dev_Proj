@@ -94,6 +94,7 @@ app.get('/profile',
 				first_name: '',
 				middle_init: '',
 				last_name: '',
+				short_bio: '',
 				phone: '',
 				email: '',
 				addr: '',
@@ -123,6 +124,7 @@ app.get('/profile',
 				data[0].first_name = rows[0].first_name;
 				data[0].middle_init = rows[0].middle_init;
 				data[0].last_name = rows[0].last_name;
+				data[0].short_bio =  rows[0].short_bio;
 				data[0].phone = rows[0].phone;
 				data[0].email = rows[0].email;
 				data[0].addr = rows[0].addr;
@@ -185,6 +187,7 @@ app.post('/profile',
 				first_name: req.body.first_name,
 				middle_init: req.body.middle_init,
 				last_name: req.body.last_name,
+				short_bio: req.body.short_bio,
 				phone: req.body.phone,
 				email: req.body.email,
 				addr: req.body.addr,
@@ -207,6 +210,7 @@ app.post('/profile',
 		data[0].first_name = truncate_string_to_length(data[0].first_name, 20);
 		data[0].last_name = truncate_string_to_length(data[0].last_name, 20);
 		data[0].middle_init = truncate_string_to_length(data[0].middle_init, 1);
+		data[0].short_bio = truncate_string_to_length(data[0].short_bio, 250);
 		data[0].phone = truncate_string_to_length(data[0].phone, 14);
 		data[0].email = truncate_string_to_length(data[0].email, 100);
 		data[0].addr = truncate_string_to_length(data[0].addr, 100);
@@ -222,6 +226,7 @@ app.post('/profile',
 			"first_name='" + data[0].first_name + "', " +
 			"last_name='" + data[0].last_name + "', " +
 			"middle_init='" + data[0].middle_init + "', " +
+			"short_bio='" + data[0].short_bio + "', " +
 			"phone='" + data[0].phone + "', " +
 			"email='" + data[0].email + "', " +
 			"addr='" + data[0].addr + "', " +
@@ -309,6 +314,15 @@ function generate_resume(user_token, template_num, username) {
 			if (err) 
 				return console.log(err);
 			console.log('document begun');
+		});
+
+		bio_str = '\\begin{rSection}{Bio}\n'+
+				  rows[0].short_bio + '\n'+
+				  '\\end{rSection}\n';
+		fs.appendFileSync(path, bio_str, function (err) {
+			if (err)
+				return console.log(err);
+			console.log(bio_str);
 		});
 
 		str3 = '\\begin{rSection}{Education}\n'+
