@@ -27,7 +27,7 @@ function change_education(num) {
 }
 
 function change_employment(num) {
-	for(let i = 1; i <= 4; ++i) {
+	for(let i = 1; i <= 3 ; ++i) {
 		if(num == i) {
 			document.getElementById('employment-history-' + i).style.display = "block";
 			document.getElementById('employment-button-' + i).classList.add('active');

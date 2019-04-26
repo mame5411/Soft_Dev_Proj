@@ -270,3 +270,11 @@ textarea {
 	margin-top: 60px;
 }
 
+.form-label {
+	display: block;
+	text-align: left;
+	font-family: RobotoBold;
+	padding-left: 3.6em;
+	color: #ABABAB;
+}
+

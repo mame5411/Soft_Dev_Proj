@@ -44,7 +44,9 @@ app.get('/login',
 	function(req, res) {
 		var token = req.cookies.user_token;
 		var username = token_table[token];
-		if(token == 'invalid-token' || username == 'undefined') {
+		if(token == 'invalid-token' || username == undefined) {
+			token = 'invalid-token';
+			res.cookie('user_token', 'invalid-token');
 			res.render('pages/login', { page_title: "Login", user_token:token, });
 		}
 		else {
@@ -72,7 +74,8 @@ app.get('/profile',
 		var username = token_table[token];
 		
 		if(username == undefined) {
-			var placeholder_data = {
+			var placeholder_data = [
+			{
 				first_name: '',
 				middle_init: '',
 				last_name: '',
@@ -92,7 +95,8 @@ app.get('/profile',
 				jobend: ['', '', '', '', ''],
 				jobdesc: ['', '', '', '', ''],
 				jobcomp: ['', '', '', '', ''],
-			};
+			}
+			];
 			
 			res.cookie('user_token', 'invalid-token');
 			res.render('pages/profile', { page_title: "Profile", user_token:token, data:placeholder_data });
