@@ -8,33 +8,33 @@
 
 		<div class= "data-form">
 			<div class = "form">
-				<form class = "login-form">
+				<form action="/profile" method="POST" class = "login-form">
 					
 					<h3>Personal Information</h3>
 					<div class="form-group form-inline">
 						<label class = "form-label">First Name</label>
-						<input class = "input" type = "text" placeholder = "First Name" value="<%-data[0].first_name%>">
+						<input class = "input" type = "text" placeholder = "First Name" value="<%-data[0].first_name%>" name="first_name">
 						<label class = "form-label">Middle Initial</label>
-						<input class = "input" type = "text" placeholder = "Middle Initial" value="<%-data[0].middle_init%>">
+						<input class = "input" type = "text" placeholder = "Middle Initial" value="<%-data[0].middle_init%>" name="middle_init">
 						<label class = "form-label">Last Name</label>
-						<input class = "input" type = "text" placeholder = "Last Name" value="<%-data[0].last_name%>">			
+						<input class = "input" type = "text" placeholder = "Last Name" value="<%-data[0].last_name%>" name="last_name">
 					</div>
 					<textarea class = "input" type = "text" placeholder = "Short Bio"></textarea>
 					<hr>
 					
 					<h3>Contact Information</h3>
 					<label class = "form-label">Phone Number</label>
-					<input class = "input" type = "text" placeholder = "Phone Number" value="<%-data[0].phone%>">
+					<input class = "input" type = "text" placeholder = "Phone Number" value="<%-data[0].phone%>" name="phone">
 					<label class = "form-label">Email</label>
-					<input class = "input" type = "text" placeholder = "Email" value="<%-data[0].email%>">
+					<input class = "input" type = "text" placeholder = "Email" value="<%-data[0].email%>"  name="email">
 					<label class = "form-label">Address</label>
-					<input class = "input" type = "text" placeholder = "Address" value="<%-data[0].addr%>">
+					<input class = "input" type = "text" placeholder = "Address" value="<%-data[0].addr%>"  name="addr">
 					<label class = "form-label">City</label>
-					<input class = "input" type = "text" placeholder = "City" value="<%-data[0].city%>">
+					<input class = "input" type = "text" placeholder = "City" value="<%-data[0].city%>"  name="city">
 					<label class = "form-label">State</label>
-					<input class = "input" type = "text" placeholder = "State" value="<%-data[0].ste%>">
+					<input class = "input" type = "text" placeholder = "State" value="<%-data[0].ste%>"  name="ste">
 					<label class = "form-label">Zip</label>
-					<input class = "input" type = "text" placeholder = "Zip Code" value="<%-data[0].zip%>">
+					<input class = "input" type = "text" placeholder = "Zip Code" value="<%-data[0].zip%>"  name="zip">
 					<hr>
 					
 					<h3>Education</h3>
@@ -49,39 +49,39 @@
 					<div id="education-history-1" style="display:block;">
 						<h4>Education History (1)</h4>
 						<label class = "form-label">School Name</label>
-						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[0]%>">
+						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[0]%>" name="edschool[0]">
 						<label class = "form-label">Grade Point Average</label>
-						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[0]%>">
+						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[0]%>" name="edgpa[0]">
 						<label class = "form-label">Graduation Date</label>
-						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-new Date(data[0].edgrad[0])%>">
+						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-data[0].edgrad[0]%>" name="edgrad[0]">
 						<label class = "form-label">Degree</label>
-						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[0]%>">
+						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[0]%>" name="edprog[0]">
 						<hr>
 					</div>
 					
 					<div id="education-history-2" style="display:none;">
 						<h4>Education History (2)</h4>
 						<label class = "form-label">School Name</label>
-						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[1]%>">
+						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[1]%>" name="edschool[1]">
 						<label class = "form-label">Grade Point Average</label>
-						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[1]%>">
+						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[1]%>"  name="edgpa[1]">
 						<label class = "form-label">Graduation Date</label>
-						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-new Date(data[0].edgrad[1])%>">
+						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-data[0].edgrad[1]%>" name="edgrad[1]">
 						<label class = "form-label">Degree</label>
-						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[1]%>">
+						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[1]%>" name="edprog[1]">
 						<hr>
 					</div>
 					
 					<div id="education-history-3" style="display:none;">
 						<h4>Education History (3)</h4>
 						<label class = "form-label">School Name</label>
-						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[2]%>">
+						<input class = "input" type = "text" placeholder = "School Name" value="<%-data[0].edschool[2]%>" name="edschool[2]">
 						<label class = "form-label">Grade Point Average</label>
-						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[2]%>">
+						<input class = "input" type = "text" placeholder = "Grade Point Average" value="<%-data[0].edgpa[2]%>" name="edgpa[2]">
 						<label class = "form-label">Graduation Date</label>
-						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-new Date(data[0].edgrad[2])%>">
+						<input class = "input" type = "date" placeholder = "Graduation Date" value="<%-data[0].edgrad[2]%>"  name="edgrad[2]">
 						<label class = "form-label">Degree</label>
-						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[2]%>">
+						<input class = "input" type = "text" placeholder = "Degree" value="<%-data[0].edprog[2]%>" name="edprog[2]">
 						<hr>
 					</div>
 					
@@ -144,7 +144,7 @@
 						<hr>
 					</div>
 					
-					<button class = "apply-button">Apply</button>
+					<button type="submit" class = "apply-button">Apply</button>
 				</form>
 			</div>
 		</div>

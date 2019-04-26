@@ -11,6 +11,11 @@ app.use(cookieParser());
 
 var token_table = {};
 
+function truncate_string_to_length(str, len) {
+	if(str.length > len) return str.substr(0, len);
+	else return str;
+}
+
 // NOTE(rjf): Database connection
 // const dbConfig = process.env.DATABASE_URL;
 const dbConfig = {
@@ -67,6 +72,17 @@ app.get('/signup',
 		}
 	});
 
+function date_object_to_proper_html_string_because_everything_sucks(date) {
+	let day = date.getDay();
+	let month = date.getMonth();
+	let year = 1900 + date.getYear();
+	
+	if(day < 10) day = '0' + day;
+	if(month < 10) month = '0' + month;
+	
+	return '' + year + '-' + month + '-' + day;
+}
+
 // NOTE(rjf): Profile page
 app.get('/profile',
 	function(req, res) {
@@ -111,6 +127,8 @@ app.get('/profile',
 				data[0].email = rows[0].email;
 				data[0].addr = rows[0].addr;
 				data[0].ste = rows[0].ste;
+				data[0].city = rows[0].city;
+				data[0].zip = rows[0].zip;
 				
 				for(let i = 0; i < 3; ++i) {
 					if(rows[0].edschool && rows[0].edschool.length > i) {
@@ -120,23 +138,25 @@ app.get('/profile',
 						data[0].edgpa[i] = rows[0].edgpa[i];
 					}
 					if(rows[0].edgrad && rows[0].edgrad.length > i) {
-						data[0].edgrad[i] = rows[0].edgrad[i];
+						let date = new Date(rows[0].edgrad[i]);
+						data[0].edgrad[i] = date_object_to_proper_html_string_because_everything_sucks(date);
 					}
 					if(rows[0].edprog && rows[0].edprog.length > i) {
 						data[0].edprog[i] = rows[0].edprog[i];
 					}
 				}
 				
-				/*
 				for(let i = 0; i < 3; ++i) {
 					if(rows[0].jobtitle.length > i) {
 						data[0].jobtitle[i] = rows[0].jobtitle[i];
 					}
 					if(rows[0].jobstart.length > i) {
-						data[0].jobstart[i] = rows[0].jobstart[i];
+						let date = new Date(rows[0].jobstart[i]);
+						data[0].jobstart[i] = date_object_to_proper_html_string_because_everything_sucks(date);
 					}
 					if(rows[0].jobend.length > i) {
-						data[0].jobend[i] = rows[0].jobend[i];
+						let date = new Date(rows[0].jobend[i]);
+						data[0].jobend[i] = date_object_to_proper_html_string_because_everything_sucks(date);
 					}
 					if(rows[0].jobdesc.length > i) {
 						data[0].jobdesc[i] = rows[0].jobdesc[i];
@@ -145,8 +165,86 @@ app.get('/profile',
 						data[0].jobcomp[i] = rows[0].jobcomp[i];
 					}
 				}
-				*/
+				
 				res.render('pages/profile', { page_title: "Profile", user_token:token, data:data });
+			})
+			.catch(function (err) {
+				// request.flash('error', err);
+			});
+		}
+	});
+	
+// NOTE(rjf): Profile page update
+app.post('/profile',
+	function(req, res) {
+		var token = req.cookies.user_token;
+		var username = token_table[token];
+		
+		var data = [
+			{
+				first_name: req.body.first_name,
+				middle_init: req.body.middle_init,
+				last_name: req.body.last_name,
+				phone: req.body.phone,
+				email: req.body.email,
+				addr: req.body.addr,
+				ste: req.body.ste,
+				city: req.body.city,
+				zip: req.body.zip,
+				edschool: [req.body.edschool[0], req.body.edschool[1], req.body.edschool[2]],
+				edgpa: [req.body.edgpa[0], req.body.edgpa[1], req.body.edgpa[2]],
+				edgrad: ['', '', ''],
+				edprog: [req.body.edprog[0], req.body.edprog[1], req.body.edprog[2]],
+				edhighlights: [],
+				jobtitle: ['', '', '', '', ''],
+				jobstart: ['', '', '', '', ''],
+				jobend: ['', '', '', '', ''],
+				jobdesc: ['', '', '', '', ''],
+				jobcomp: ['', '', '', '', ''],
+			}
+		];
+		
+		data[0].first_name = truncate_string_to_length(data[0].first_name, 20);
+		data[0].last_name = truncate_string_to_length(data[0].last_name, 20);
+		data[0].middle_init = truncate_string_to_length(data[0].middle_init, 1);
+		data[0].phone = truncate_string_to_length(data[0].phone, 14);
+		data[0].email = truncate_string_to_length(data[0].email, 100);
+		data[0].addr = truncate_string_to_length(data[0].addr, 100);
+		data[0].city = truncate_string_to_length(data[0].city, 50);
+		data[0].ste = truncate_string_to_length(data[0].ste, 50);
+		data[0].zip = truncate_string_to_length(data[0].zip, 12);
+		
+		if(username == undefined) {
+			// TODO(rjf): Handle the case where the user enters data but does not have an account
+		}
+		else {
+			let query = "UPDATE users SET " +
+			"first_name='" + data[0].first_name + "', " +
+			"last_name='" + data[0].last_name + "', " +
+			"middle_init='" + data[0].middle_init + "', " +
+			"phone='" + data[0].phone + "', " +
+			"email='" + data[0].email + "', " +
+			"addr='" + data[0].addr + "', " +
+			"city='" + data[0].city + "', " +
+			"ste='" + data[0].ste + "', " +
+			"zip='" + data[0].zip + "', " +
+			"edschool[0]='" + data[0].edschool[0] + "', " +
+			"edgpa[0]='" + data[0].edgpa[0] + "', " +
+			// "edgrad[0]='" + data[0].edgrad[0] + "', " +
+			"edprog[0]='" + data[0].edprog[0] + "' " +
+			/*
+			"jobtitle='" + data[0].jobtitle[0] + "';'" + data[0].jobtitle[1] + "';'" + data[0].jobtitle[2] + "', " +
+			"jobstart='" + data[0].jobstart[0] + "';'" + data[0].jobstart[1] + "';'" + data[0].jobstart[2] + "', " +
+			"jobend='" + data[0].jobend[0] + "';'" + data[0].jobend[1] + "';'" + data[0].jobend[2] + "', " +
+			"jobdesc='" + data[0].jobdesc[0] + "';'" + data[0].jobdesc[1] + "';'" + data[0].jobdesc[2] + "', " +
+			"jobcomp='" + data[0].jobcomp[0] + "';'" + data[0].jobcomp[1] + "';'" + data[0].jobcomp[2] + "' " +
+			*/
+			"WHERE username = '" + username + "';";
+			
+			console.log(query);
+			
+			db.any(query).then(function (rows) {
+				res.redirect('/profile');
 			})
 			.catch(function (err) {
 				// request.flash('error', err);
