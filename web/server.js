@@ -73,7 +73,7 @@ app.get('/profile',
 		var token = req.cookies.user_token;
 		var username = token_table[token];
 		
-		var placeholder_data = [
+		var data = [
 			{
 				first_name: '',
 				middle_init: '',
@@ -99,12 +99,11 @@ app.get('/profile',
 		
 		if(username == undefined) {
 			res.cookie('user_token', 'invalid-token');
-			res.render('pages/profile', { page_title: "Profile", user_token:token, data:placeholder_data });
+			res.render('pages/profile', { page_title: "Profile", user_token:token, data:data });
 		}
 		else {
 			db.any("select * from users where username = '" + username + "';").then(function (rows) {
-					
-				var data = placeholder_data;
+				
 				data[0].first_name = rows[0].first_name;
 				data[0].middle_init = rows[0].middle_init;
 				data[0].last_name = rows[0].last_name;
@@ -114,16 +113,16 @@ app.get('/profile',
 				data[0].ste = rows[0].ste;
 				
 				for(let i = 0; i < 3; ++i) {
-					if(row[0].edschool && row[0].edschool.length > i) {
+					if(row[0].edschool != undefined && row[0].edschool.length > i) {
 						data[0].edschool[i] = rows[0].edschool[i];
 					}
-					if(row[0].edgpa && row[0].edgpa.length > i) {
+					if(row[0].edgpa != undefined && row[0].edgpa.length > i) {
 						data[0].edgpa[i] = rows[0].edgpa[i];
 					}
-					if(row[0].edgrad && row[0].edgrad.length > i) {
+					if(row[0].edgrad != undefined && row[0].edgrad.length > i) {
 						data[0].edgrad[i] = rows[0].edgrad[i];
 					}
-					if(row[0].edprog && row[0].edprog.length > i) {
+					if(row[0].edprog != undefined && row[0].edprog.length > i) {
 						data[0].edprog[i] = rows[0].edprog[i];
 					}
 				}
