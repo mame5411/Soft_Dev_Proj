@@ -1,0 +1,14 @@
+\documentclass{resume}
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Hugh Dicks}
+\address{65th & Inglside, Chiraq, Billinois, 69696}
+\address{303-867-5309 \\ pussycrusher@aol.com}
+\begin{document}
+\begin{rsection}{Education}
+{\bf DeVry U} \hfill {em Graduated: Sat Apr 20 3005 00:00:00 GMT-0600 (Mountain Daylight Time)}
+\ Underwater Basket Weaving\hfill {GPA: 4 }
+{\bf DeVry U} \hfill {em Graduated: Thu Jul 04 1776 00:00:00 GMT-0659 (Mountain Daylight Time)}
+\ Underwater Basket Weaving\hfill {GPA: 4 }
+\end{document}

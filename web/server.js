@@ -293,23 +293,61 @@ function generate_resume(user_token, template_num, username) {
 	});
 	
 	db.any("select * from users where username = '" + username + "'").then(function (rows) {
-		var str2 = '\\name{' + rows[0].username + '}\n';
+		var str2 = '\\name{' + rows[0].first_name + ' ' + rows[0].last_name +'}\n'+
+				   '\\address{'+rows[0].addr+', ' + rows[0].city + ', ' + rows[0].ste +
+				   		', ' + rows[0].zip + '}\n'+
+				   '\\address{'+rows[0].phone+' \\\\ '+rows[0].email+'}\n';
 		
-		fs.appendFile(path, str2, function (err) {
+		fs.appendFileSync(path, str2, function (err) {
 			if (err)
 				return console.log(err);
 			console.log(str2);
 		});
 
 		// begin the document
-		fs.appendFile(path, '\\begin{document}\n', function (err) {
+		fs.appendFileSync(path, '\\begin{document}\n', function (err) {
 			if (err) 
 				return console.log(err);
 			console.log('document begun');
 		});
 
+		str3 = '\\begin{rSection}{Education}\n'+
+			   '{\\bf '+ rows[0].edschool[0] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[0])+'}\n'+
+			   '\\\\ '+rows[0].edprog[0]+'\\hfill {GPA: '+rows[0].edgpa[0]+' }\n'+
+			   '\\\\{\\bf '+ rows[0].edschool[1] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[1])+'}\n'+
+			   '\\\\ '+rows[0].edprog[1]+'\\hfill {GPA: '+rows[0].edgpa[1]+' }\n'+
+			   // '\\\\{\\bf '+ rows[0].edschool[2] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[2])+'}\n'+
+			   // '\\\\ '+rows[0].edprog[2]+'\\hfill {GPA: '+rows[0].edgpa[2]+' }\n'+
+			   '\\end{rSection}\n';
+		
+		fs.appendFileSync(path, str3, function (err) {
+			if (err)
+				return console.log(err);
+			console.log(str3);
+		});
+
+		str4 = '\\begin{rSection}{Work Experience}\n'+
+			   '{\\bf '+ rows[0].jobcomp[0] + '}\n '+
+			   '\\\\ '+rows[0].jobtitle[0]+'\\hfill {\\em Employed: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].jobstart[0])+' - '+date_object_to_proper_html_string_because_everything_sucks(rows[0].jobend[0])+'}\n'+
+			   '\\begin{quote}\n'+
+			   rows[0].jobdesc[0]+'\n'+
+			   '\\end{quote}\n'+
+			   '\\\\{\\bf '+ rows[0].jobcomp[1] + '}\n '+
+			   '\\\\ '+rows[0].jobtitle[1]+'\\hfill {\\em Employed: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].jobstart[1])+' - '+date_object_to_proper_html_string_because_everything_sucks(rows[0].jobend[1])+'}\n'+
+			   '\\begin{quote}\n'+
+			   rows[0].jobdesc[1]+'\n'+
+			   '\\end{quote}\n'+
+			   // '\\\\{\\bf '+ rows[0].edschool[2] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[2])+'}\n'+
+			   // '\\\\ '+rows[0].edprog[2]+'\\hfill {GPA: '+rows[0].edgpa[2]+' }\n'+
+			   '\\end{rSection}\n';
+	
+		fs.appendFileSync(path, str4, function (err) {
+			if (err)
+				return console.log(err);
+			console.log(str4);
+		});		
 		// end the document
-		fs.appendFile(path, '\\end{document}', function (err) {
+		fs.appendFileSync(path, '\\end{document}', function (err) {
 			if (err)
 				return console.log(err);
 			console.log('Document ended!');
