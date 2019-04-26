@@ -113,35 +113,35 @@ app.get('/profile',
 				data[0].ste = rows[0].ste;
 				
 				for(let i = 0; i < 3; ++i) {
-					if(row[0].edschool != undefined && row[0].edschool.length > i) {
+					if(rows[0].edschool && rows[0].edschool.length > i) {
 						data[0].edschool[i] = rows[0].edschool[i];
 					}
-					if(row[0].edgpa != undefined && row[0].edgpa.length > i) {
+					if(rows[0].edgpa && rows[0].edgpa.length > i) {
 						data[0].edgpa[i] = rows[0].edgpa[i];
 					}
-					if(row[0].edgrad != undefined && row[0].edgrad.length > i) {
+					if(rows[0].edgrad && rows[0].edgrad.length > i) {
 						data[0].edgrad[i] = rows[0].edgrad[i];
 					}
-					if(row[0].edprog != undefined && row[0].edprog.length > i) {
+					if(rows[0].edprog && rows[0].edprog.length > i) {
 						data[0].edprog[i] = rows[0].edprog[i];
 					}
 				}
 				
 				/*
 				for(let i = 0; i < 3; ++i) {
-					if(row[0].jobtitle.length > i) {
+					if(rows[0].jobtitle.length > i) {
 						data[0].jobtitle[i] = rows[0].jobtitle[i];
 					}
-					if(row[0].jobstart.length > i) {
+					if(rows[0].jobstart.length > i) {
 						data[0].jobstart[i] = rows[0].jobstart[i];
 					}
-					if(row[0].jobend.length > i) {
+					if(rows[0].jobend.length > i) {
 						data[0].jobend[i] = rows[0].jobend[i];
 					}
-					if(row[0].jobdesc.length > i) {
+					if(rows[0].jobdesc.length > i) {
 						data[0].jobdesc[i] = rows[0].jobdesc[i];
 					}
-					if(row[0].jobcomp.length > i) {
+					if(rows[0].jobcomp.length > i) {
 						data[0].jobcomp[i] = rows[0].jobcomp[i];
 					}
 				}
