@@ -253,6 +253,12 @@ textarea {
 	background-color: #34A7E9;
 	border: none;
 	color: #FFFFFF;
+	transition: all ease 0.1s;
+}
+
+.apply-button:hover {
+	transition: all ease 0.1s;
+	transform: translate(0, -3px);
 }
 
 .footer {

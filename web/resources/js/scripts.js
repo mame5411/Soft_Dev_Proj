@@ -1,20 +1,17 @@
 
-function get_token() {
-	return document.getElementById('user-session-token').innerText;
-}
-
-function set_token(token) {
-	document.getElementById('user-session-token').innerText = token;
-}
-
-function login(username, password) {
-	var request = new Request('/loginreq');
-	fetch(request).then(function(response) {
-		return response.text();
-	}).then(function(text) {
-		console.log(text.substring(0, 100));
-	});
-
+function login(user, pass) {
+	const http = new XMLHttpRequest();
+	const url = '/login';
+	http.open("POST", url, true);
+	http.setRequestHeader("Content-Type", "application/json");
+	http.onreadystatechange = function() {
+		if (http.readyState === 4 && http.status === 200) {
+			// var response = JSON.parse(http.responseText);
+			// set_token(response.token);
+		}
+	}
+	var data = JSON.stringify({"user":user, "pass":pass});
+	http.send(data);
 }
 
 function change_education(num) {
@@ -46,10 +43,18 @@ function change_employment(num) {
 function request_generate(template_number) {
 	const http = new XMLHttpRequest();
 	const url = '/generate';
-	var params = 'template_num=' + template_number;
-	http.open("POST", url);
+	http.open("POST", url, true);
+	http.setRequestHeader("Content-Type", "application/json");
 	http.onreadystatechange = (e) => {
-		alert(http.responseText)
+		if (http.readyState === 4 && http.status === 200) {
+			var response = JSON.parse(http.responseText);
+			document.location = '/results';
+		}
 	}
-	http.send(params);
+	var data = JSON.stringify({"template_num":template_number,});
+	http.send(data);
+}
+
+function form_login() {
+	login(document.getElementById('username').value, document.getElementById('password').value);
 }

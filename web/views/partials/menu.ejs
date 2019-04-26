@@ -1,5 +1,13 @@
 <div class="navbar">
 	<a href="/profile"><button class="navbar-button">Profile</button></a>
 	<a href="/generate"><button class="navbar-button">Generate</button></a>
-	<a href="/logout"><button class="navbar-button">Log Out</button></a>
+	<%
+	let logout_button = '<a href="/logout"><button class="navbar-button">Log Out</button></a>';
+	let login_button = '<a href="/login"><button class="navbar-button">Login or Sign Up</button></a>';
+	var log_button = login_button;
+	if(user_token != 'invalid-token') {
+		log_button = logout_button;
+	}
+	%>
+	<%- log_button %>
 </div>
