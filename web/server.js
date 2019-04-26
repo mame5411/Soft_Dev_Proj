@@ -147,21 +147,21 @@ app.get('/profile',
 				}
 				
 				for(let i = 0; i < 3; ++i) {
-					if(rows[0].jobtitle.length > i) {
+					if(rows[0].jobtitle && rows[0].jobtitle.length > i) {
 						data[0].jobtitle[i] = rows[0].jobtitle[i];
 					}
-					if(rows[0].jobstart.length > i) {
+					if(rows[0].jobstart && rows[0].jobstart.length > i) {
 						let date = new Date(rows[0].jobstart[i]);
 						data[0].jobstart[i] = date_object_to_proper_html_string_because_everything_sucks(date);
 					}
-					if(rows[0].jobend.length > i) {
+					if(rows[0].jobend && rows[0].jobend.length > i) {
 						let date = new Date(rows[0].jobend[i]);
 						data[0].jobend[i] = date_object_to_proper_html_string_because_everything_sucks(date);
 					}
-					if(rows[0].jobdesc.length > i) {
+					if(rows[0].jobdesc && rows[0].jobdesc.length > i) {
 						data[0].jobdesc[i] = rows[0].jobdesc[i];
 					}
-					if(rows[0].jobcomp.length > i) {
+					if(rows[0].jobcomp && rows[0].jobcomp.length > i) {
 						data[0].jobcomp[i] = rows[0].jobcomp[i];
 					}
 				}
