@@ -83,6 +83,7 @@ function date_object_to_proper_html_string_because_everything_sucks(date) {
 	return '' + year + '-' + month + '-' + day;
 }
 
+
 // NOTE(rjf): Profile page
 app.get('/profile',
 	function(req, res) {
@@ -105,7 +106,7 @@ app.get('/profile',
 				edgpa: ['', '', ''],
 				edgrad: ['', '', ''],
 				edprog: ['', '', ''],
-				edhighlights: [],
+				edhighlights: ['', '', '', ''],
 				jobtitle: ['', '', '', '', ''],
 				jobstart: ['', '', '', '', ''],
 				jobend: ['', '', '', '', ''],
@@ -145,6 +146,9 @@ app.get('/profile',
 					}
 					if(rows[0].edprog && rows[0].edprog.length > i) {
 						data[0].edprog[i] = rows[0].edprog[i];
+					}
+					if(rows[0].edhighlights && rows[0].edhighlights.length > i) {
+						data[0].edhighlights[i] = rows[0].edhighlights[i];
 					}
 				}
 				
@@ -198,7 +202,7 @@ app.post('/profile',
 				edgpa: [req.body.edgpa[0], req.body.edgpa[1], req.body.edgpa[2]],
 				edgrad: ['', '', ''],
 				edprog: [req.body.edprog[0], req.body.edprog[1], req.body.edprog[2]],
-				edhighlights: [],
+				edhighlights: [req.body.edhighlights[0], req.body.edhighlights[1], req.body.edhighlights[2], req.body.edhighlights[3]],
 				jobtitle: ['', '', '', '', ''],
 				jobstart: ['', '', '', '', ''],
 				jobend: ['', '', '', '', ''],
@@ -217,6 +221,9 @@ app.post('/profile',
 		data[0].city = truncate_string_to_length(data[0].city, 50);
 		data[0].ste = truncate_string_to_length(data[0].ste, 50);
 		data[0].zip = truncate_string_to_length(data[0].zip, 12);
+		//data[0].edhighlights[0] = truncate_string_to_length(data[0].edhighlights[0], 250);
+		//data[0].edgrad = html_string_to_date(data[0].edgrad);
+		//console.log(data[0].edgrad[0]);
 		
 		if(username == undefined) {
 			// TODO(rjf): Handle the case where the user enters data but does not have an account
@@ -235,8 +242,10 @@ app.post('/profile',
 			"zip='" + data[0].zip + "', " +
 			"edschool[0]='" + data[0].edschool[0] + "', " +
 			"edgpa[0]='" + data[0].edgpa[0] + "', " +
-			// "edgrad[0]='" + data[0].edgrad[0] + "', " +
-			"edprog[0]='" + data[0].edprog[0] + "' " +
+			//"edgrad[0]='" + html_string_to_date(data[0].edgrad); + "', " +
+			"edprog[0]='" + data[0].edprog[0] + "', " +
+			"edhighlights[0]='" + data[0].edhighlights[0] + "' " +
+			//"edhighlights[0]='total issue!', " +
 			/*
 			"jobtitle='" + data[0].jobtitle[0] + "';'" + data[0].jobtitle[1] + "';'" + data[0].jobtitle[2] + "', " +
 			"jobstart='" + data[0].jobstart[0] + "';'" + data[0].jobstart[1] + "';'" + data[0].jobstart[2] + "', " +
@@ -328,8 +337,14 @@ function generate_resume(user_token, template_num, username) {
 		str3 = '\\begin{rSection}{Education}\n'+
 			   '{\\bf '+ rows[0].edschool[0] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[0])+'}\n'+
 			   '\\\\ '+rows[0].edprog[0]+'\\hfill {GPA: '+rows[0].edgpa[0]+' }\n'+
+			   '\\begin{quote}\n'+
+			   rows[0].edhighlights[0]+'\n'+
+			   '\\end{quote}\n'+
 			   '\\\\{\\bf '+ rows[0].edschool[1] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[1])+'}\n'+
 			   '\\\\ '+rows[0].edprog[1]+'\\hfill {GPA: '+rows[0].edgpa[1]+' }\n'+
+			   '\\begin{quote}\n'+
+			   rows[0].edhighlights[1]+'\n'+
+			   '\\end{quote}\n'+
 			   // '\\\\{\\bf '+ rows[0].edschool[2] + '} \\hfill {\\em Graduated: '+date_object_to_proper_html_string_because_everything_sucks(rows[0].edgrad[2])+'}\n'+
 			   // '\\\\ '+rows[0].edprog[2]+'\\hfill {GPA: '+rows[0].edgpa[2]+' }\n'+
 			   '\\end{rSection}\n';

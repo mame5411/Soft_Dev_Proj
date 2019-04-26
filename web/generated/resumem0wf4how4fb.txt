@@ -1,0 +1,36 @@
+\documentclass{resume}
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Steve Wozniak}
+\address{5532 Tech Drive, San Jose, California, 45296}
+\address{916-555-5309 \\ thewoz@apple.com}
+\begin{document}
+\begin{rSection}{Bio}
+I spend my free time designing and building cool technology. I am responsible for the PC as we know it today.
+\end{rSection}
+\begin{rSection}{Education}
+{\bf University of California, Berkeley} \hfill {\em Graduated: 1987-05-03}
+\\ BS in Electrical Engineering and Computer Science\hfill {GPA: 4 }
+\begin{quote}
+I went back and finished this degree after finishing the Apple II.
+\end{quote}
+\\{\bf University of California, Berkeley} \hfill {\em Graduated: 1989-06-02}
+\\ BS in Electrical Engineering and Computer Science\hfill {GPA: 4 }
+\begin{quote}
+I went back and finished this degree after finishing the Apple II.
+\end{quote}
+\end{rSection}
+\begin{rSection}{Work Experience}
+{\bf Apple Computer Inc.}
+ \\ Inventor, Hardware designer\hfill {\em Employed: 1976-00-00 - 1985-11-03}
+\begin{quote}
+Designed, built, and tested the Apple I, Apple II, and many other products. I made significant advancements in the field of personal computing, but the most profound was bringing color to the computer.
+\end{quote}
+\\{\bf Electronic Frontier Foundation}
+ \\ Philanthropist\hfill {\em Employed: 1985-11-03 - 2019-03-05}
+\begin{quote}
+I supported the kids of the Los Gatos School District for many years. Connecting students and teachers with technology is an important undertakeing.
+\end{quote}
+\end{rSection}
+\end{document}

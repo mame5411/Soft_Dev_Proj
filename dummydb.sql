@@ -35,7 +35,7 @@ CREATE TABLE users (
 	EDgpa float ARRAY[3],
 	EDgrad date ARRAY[3],
 	EDprog text ARRAY[3],
-	EDhighlights text ARRAY[30],
+	EDhighlights text ARRAY[3],
 	JOBtitle text ARRAY[5],
 	JOBstart date ARRAY[5],
 	JOBend date ARRAY[5],
